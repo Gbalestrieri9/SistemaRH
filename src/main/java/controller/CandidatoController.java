@@ -19,12 +19,12 @@ public class CandidatoController {
         this.candidatoService = new CandidatoService();
     }
 
-    public void cadastrarHabilidade() {
+    public void cadastrarHabilidade(int id) {
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_CATEGORIA);
         String categoria = input.nextLine();
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_HABILIDADE);
         String habilidade = input.nextLine();
 
-        candidatoService.cadastrarHabilidade(categoria,habilidade);
+        candidatoService.cadastrarHabilidade(id,categoria,habilidade);
     }
 }

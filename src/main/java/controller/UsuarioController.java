@@ -30,13 +30,13 @@ public class UsuarioController {
         usuarioService.cadastrarUsuario(nome, email, senha, tipo);
     }
 
-    public void login() {
+    public int login() {
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL);
         String email = input.nextLine();
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_SENHA);
         String senha = input.nextLine();
 
-        long idConta=0;
+        int idConta=0;
         idConta = usuarioService.loginUsuario(email, senha);
         clienteLogado = new ClienteLogadoDto(idConta);
         if (clienteLogado != null) {
@@ -44,5 +44,6 @@ public class UsuarioController {
         } else {
             System.out.println("Credenciais invalidas. Tente novamente.");
         }
+        return idConta;
     }
 }

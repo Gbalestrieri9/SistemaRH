@@ -22,8 +22,8 @@ public class UsuarioService {
         }
     }
 
-    public long loginUsuario(String email, String senha){
-        long id =0;
+    public int loginUsuario(String email, String senha){
+        int id =0;
         try {
            id = usuarioDao.loginUsuario(email, senha);
         } catch (SistemaRHDBException e){

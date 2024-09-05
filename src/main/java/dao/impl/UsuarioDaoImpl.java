@@ -34,9 +34,9 @@ public class UsuarioDaoImpl implements IUsuarioDao {
     }
 
 
-    public long loginUsuario(String email,String senha) throws SistemaRHDBException{
+    public int loginUsuario(String email,String senha) throws SistemaRHDBException{
         String sql = "SELECT login_usuario(?,?)";
-        long id;
+        int id;
 
         try{
             minhaConexao = conexaoUtil.conexao();

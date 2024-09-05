@@ -1,5 +1,7 @@
 package controller;
 
+import dto.ClienteLogadoDto;
+
 import java.sql.SQLException;
 
 public class MenuController {
@@ -7,10 +9,13 @@ public class MenuController {
     UsuarioController usuarioController;
     CandidatoController candidatoController;
 
+    private int id;
+
     public MenuController() throws SQLException {
         this.usuarioController = new UsuarioController();
         this.candidatoController = new CandidatoController();
     }
+
 
     public void controle(int acaoSelecionada) {
         switch (acaoSelecionada) {
@@ -18,10 +23,10 @@ public class MenuController {
                 usuarioController.cadastrar();
                 break;
             case 2:
-                usuarioController.login();
+                id = usuarioController.login();
                 break;
             case 3:
-                candidatoController.cadastrarHabilidade();
+                candidatoController.cadastrarHabilidade(id);
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");
