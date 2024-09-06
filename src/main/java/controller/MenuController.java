@@ -8,14 +8,15 @@ public class MenuController {
 
     UsuarioController usuarioController;
     CandidatoController candidatoController;
+    AvaliadorController avaliadorController;
 
     private int id;
 
     public MenuController() throws SQLException {
         this.usuarioController = new UsuarioController();
         this.candidatoController = new CandidatoController();
+        this.avaliadorController = new AvaliadorController();
     }
-
 
     public void controle(int acaoSelecionada) {
         switch (acaoSelecionada) {
@@ -27,6 +28,9 @@ public class MenuController {
                 break;
             case 3:
                 candidatoController.cadastrarHabilidade(id);
+                break;
+            case 4:
+                avaliadorController.retornaHabilidadesPorEmail();
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");

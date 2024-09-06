@@ -13,7 +13,6 @@ public class CandidatoController {
     Scanner input = new Scanner(System.in);
 
     CandidatoService candidatoService;
-    ClienteLogadoDto clienteLogado;
 
     public CandidatoController() throws SQLException {
         this.candidatoService = new CandidatoService();
