@@ -1,12 +1,12 @@
 package service;
 
 import dao.IAvaliadorDao;
-import dao.IUsuarioDao;
 import dao.impl.AvaliadorDaoImpl;
-import dao.impl.UsuarioDaoImpl;
+import dto.CategoriaEHabilidadeDto;
 import exception.SistemaRHDBException;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AvaliadorService {
 
@@ -16,11 +16,12 @@ public class AvaliadorService {
         this.AvaliadorDao = new AvaliadorDaoImpl();
     }
 
-    public void retornaHabilidadesPorEmail(String email) {
+    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(int id,String email) {
         try {
-            AvaliadorDao.retornaHabilidadesPorEmail(email);
-        } catch (SistemaRHDBException e){
+            return AvaliadorDao.retornaHabilidadesPorEmail(id,email);
+        } catch (SistemaRHDBException e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 }

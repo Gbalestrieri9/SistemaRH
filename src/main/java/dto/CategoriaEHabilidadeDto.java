@@ -25,4 +25,11 @@ public class CategoriaEHabilidadeDto {
     public void setHabilidades(String habilidades) {
         this.habilidades = habilidades;
     }
+
+    @Override
+    public String toString() {
+        return
+                "categoria: " + categoria +
+                ", habilidades: " + habilidades ;
+    }
 }

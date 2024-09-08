@@ -30,7 +30,7 @@ public class MenuController {
                 candidatoController.cadastrarHabilidade(id);
                 break;
             case 4:
-                avaliadorController.retornaHabilidadesPorEmail();
+                avaliadorController.retornaHabilidadesPorEmail(id);
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");

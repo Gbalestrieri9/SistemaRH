@@ -19,20 +19,22 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws SistemaRHDBException {
-        String sql = "call inserir_habilidade(?)";
+    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(int id,String email) throws SistemaRHDBException {
+        String sql = "select * from busca_habilidades_por_email(?,?)";
         List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.setString(2,email);
             ResultSet rs = ps.executeQuery();
 
             String categoria;
             String habilidade;
 
             while(rs.next()){
-                categoria = rs.getString("categoria");
-                habilidade = rs.getString("habilidade");
+                categoria = rs.getString("habilidade_categoria");
+                habilidade = rs.getString("habilidade_habilidade");
                 categoriaEHabilidadeDto = new CategoriaEHabilidadeDto(categoria, habilidade);
                 habilidades.add(categoriaEHabilidadeDto);
             }
@@ -44,21 +46,30 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
         return habilidades;
     }
 
-//    public void retornaHabilidadesPorCategoria(String categoria) throws SistemaRHDBException {
-//        String sql = "call inserir_habilidade(?)";
-//
+//    public String listarVagas(int id) throws SistemaRHDBException {
+//        String sql = "select * from busca_habilidades_por_email(?,?)";
+//        List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
 //        try {
 //            minhaConexao = conexaoUtil.conexao();
 //            PreparedStatement ps = minhaConexao.prepareStatement(sql);
+//            ps.setInt(1,id);
+//            ResultSet rs = ps.executeQuery();
 //
-//            ps.setInt(1,idUsuario);
-//            ps.setString(2, categoria);
-//            ps.setString(3, habilidade);
-//            ps.execute();
+//            String categoria;
+//            String habilidade;
+//
+//            while(rs.next()){
+//                categoria = rs.getString("habilidade_categoria");
+//                habilidade = rs.getString("habilidade_habilidade");
+//                categoriaEHabilidadeDto = new CategoriaEHabilidadeDto(categoria, habilidade);
+//                habilidades.add(categoriaEHabilidadeDto);
+//            }
 //            conexaoUtil.fecharConexao(minhaConexao);
 //        }catch (SQLException e){
 //            System.out.println(e.getMessage());
 //            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_HABILIDADE);
 //        }
+//        return habilidades;
 //    }
+
 }

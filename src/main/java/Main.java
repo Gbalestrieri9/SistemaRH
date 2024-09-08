@@ -20,7 +20,7 @@ public class Main {
                         + "1.Se cadastre\n"
                         + "2.Acessar conta\n"
                         + "3.Cadastrar habilidade\n"
-                        + "4.Depositar\n"
+                        + "4.Acessar habilidades do candidato\n"
                         + "5.Transferencia via Pix\n"
                         + "6.Alterar senha\n"
                         + "7.Altere seu limite de trasações\n"
