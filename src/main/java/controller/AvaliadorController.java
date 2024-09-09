@@ -27,7 +27,7 @@ public class AvaliadorController {
         String email = input.nextLine();
 
         List<CategoriaEHabilidadeDto> habilidadeDtoList = new ArrayList<>();
-        habilidadeDtoList= avaliadorService.retornaHabilidadesPorEmail(id,email);
+        habilidadeDtoList= avaliadorService.retornaHabilidadesPorEmail(email);
 
         System.out.println("\nHabilidades do candidato: ");
         for (CategoriaEHabilidadeDto habilidadeDto : habilidadeDtoList )

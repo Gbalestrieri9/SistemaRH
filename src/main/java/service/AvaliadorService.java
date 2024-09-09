@@ -18,9 +18,9 @@ public class AvaliadorService {
         this.AvaliadorDao = new AvaliadorDaoImpl();
     }
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(int id,String email) {
+    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) {
         try {
-            return AvaliadorDao.retornaHabilidadesPorEmail(id,email);
+            return AvaliadorDao.retornaHabilidadesPorEmail(email);
         } catch (SistemaRHDBException e) {
             System.out.println(e.getMessage());
             return null;

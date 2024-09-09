@@ -21,14 +21,13 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(int id,String email) throws SistemaRHDBException {
-        String sql = "select * from busca_habilidades_por_email(?,?)";
+    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws SistemaRHDBException {
+        String sql = "select * from busca_habilidades_por_email(?)";
         List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
-            ps.setInt(1,id);
-            ps.setString(2,email);
+            ps.setString(1,email);
             ResultSet rs = ps.executeQuery();
 
             String categoria;
