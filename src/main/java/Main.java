@@ -21,12 +21,8 @@ public class Main {
                         + "2.Acessar conta\n"
                         + "3.Cadastrar habilidade\n"
                         + "4.Acessar habilidades do candidato\n"
-                        + "5.Transferencia via Pix\n"
-                        + "6.Alterar senha\n"
-                        + "7.Altere seu limite de trasações\n"
-                        + "8.Ative/desative sua conta\n"
-                        + "9.Compre \n"
-                        + "10.Sair \n");
+                        + "5.Inserir candidato na vaga\n"
+                        + "6.Sair \n");
 
                 System.out.println(ConstantesUtil.MENSAGEM_DIGITAR_NUMERO_MENU);
                 acaoDigitada = input.nextInt();

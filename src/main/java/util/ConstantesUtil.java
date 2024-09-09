@@ -14,4 +14,10 @@ public class ConstantesUtil {
     public static final String MENSAGEM_DIGITAR_NUMERO_MENU = "Digite a numeração que deseja selecionar acima:";
     public static final String MENSAGEM_FINALIZACAO_PROGRAMA = "Programa finalizado com sucesso!";
     public static final String MENSAGEM_ERRO_MENU = "Digite apenas os numeros disponiveis no menu de controle\n";
+    public static final String MENSAGEM_ESCREVER_EMAIL_CANDIDATO = "Escreva o email do candidato";
+    public static final String MENSAGEM_ESCREVER_VAGA_NUMERO = "Escreva o numero da vaga";
+    public static final String MENSAGEM_SUCESSO_INSERIR_CANDIDATO = "Candidato inserido na vaga com sucesso!";
+    public static final String MENSAGEM_ERRO_INSERIR_CANDIDATO = "Erro ao inserir candidato na vaga";
+    public static final String MENSAGEM_ERRO_LISTAR_VAGAS = "Erro ao listar as vagas";
+    public static final String MENSAGEM_ERRO_INSERIR_CANDIDATO_DB = "Erro ao cadastrar o candidato na vaga";
 }

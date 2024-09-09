@@ -32,6 +32,9 @@ public class MenuController {
             case 4:
                 avaliadorController.retornaHabilidadesPorEmail(id);
                 break;
+            case 5:
+                avaliadorController.inserirCandidatoNaVaga(id);
+                break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");
         }
