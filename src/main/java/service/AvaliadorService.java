@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AvaliadorService {
 
-    IAvaliadorDao AvaliadorDao;
+   private IAvaliadorDao AvaliadorDao;
 
     public AvaliadorService() throws SQLException {
         this.AvaliadorDao = new AvaliadorDaoImpl();

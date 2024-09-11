@@ -20,4 +20,6 @@ public class ConstantesUtil {
     public static final String MENSAGEM_ERRO_INSERIR_CANDIDATO = "Erro ao inserir candidato na vaga";
     public static final String MENSAGEM_ERRO_LISTAR_VAGAS = "Erro ao listar as vagas";
     public static final String MENSAGEM_ERRO_INSERIR_CANDIDATO_DB = "Erro ao cadastrar o candidato na vaga";
+    public static final String MENSAGEM_TIPO_AVALIADOR_NAO_PERMITIDO = "Acesso negado. Somente candidatos podem acessar esta opção";
+    public static final String MENSAGEM_TIPO_CANDIDATO_NAO_PERMITIDO = "Acesso negado. Somente Avaliadores podem acessar esta opção";
 }

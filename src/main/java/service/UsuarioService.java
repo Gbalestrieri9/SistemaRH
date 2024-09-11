@@ -8,15 +8,15 @@ import java.sql.SQLException;
 
 public class UsuarioService {
 
-    IUsuarioDao usuarioDao;
+    private IUsuarioDao usuarioDao;
 
     public UsuarioService() throws SQLException {
         this.usuarioDao = new UsuarioDaoImpl();
     }
 
-    public void cadastrarUsuario(String nome, String email, String senha, String tipo) {
+    public void cadastrarUsuario(String nome, String email, String senha) {
         try {
-            usuarioDao.criarUsuario(nome, email, senha, tipo);
+            usuarioDao.criarUsuario(nome, email, senha);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }
@@ -32,4 +32,12 @@ public class UsuarioService {
         return id;
     }
 
+    public String getTipoConta(int id) {
+        try {
+            return usuarioDao.getTipoConta(id);
+        } catch (SistemaRHDBException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

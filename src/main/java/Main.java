@@ -29,20 +29,13 @@ public class Main {
                // input.nextLine();
                 System.out.println("\n");
 
-                if(acaoDigitada == 10) {
+                if(acaoDigitada == 6) {
                     menu.controle(acaoDigitada);
                     executando = false;
                     input.close();
                     System.out.println(ConstantesUtil.MENSAGEM_FINALIZACAO_PROGRAMA);
-                } else if(acaoDigitada ==1) {
+                } else  {
                     menu.controle(acaoDigitada);
-                }
-                else {
-                    if((acaoDigitada>= 3 && acaoDigitada<=9) && menu != null) {
-                        menu.controle(acaoDigitada);
-                    }else {
-                        menu.controle(2);
-                    }
                 }
             } catch(Exception e) {
                 System.out.println(ConstantesUtil.MENSAGEM_ERRO_MENU);

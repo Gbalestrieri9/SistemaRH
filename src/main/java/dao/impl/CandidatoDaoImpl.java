@@ -11,11 +11,11 @@ import java.sql.SQLException;
 
 public class CandidatoDaoImpl implements ICandidatoDao {
 
-    ConexaoUtil conexaoUtil = new ConexaoUtil();
-    Connection minhaConexao;
+    private ConexaoUtil conexaoUtil = new ConexaoUtil();
+    private Connection minhaConexao;
 
     public void CadastrarHabilidade(int idUsuario,String categoria, String habilidade) throws SistemaRHDBException{
-        String sql = "call inserir_habilidade(?, ?, ?)";
+        String sql = "CALL inserir_habilidade(?, ?, ?)";
 
         try {
             minhaConexao = conexaoUtil.conexao();

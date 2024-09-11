@@ -22,7 +22,7 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
     private Connection minhaConexao;
 
     public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws SistemaRHDBException {
-        String sql = "select * from busca_habilidades_por_email(?)";
+        String sql = "SELECT * FROM busca_habilidades_por_email(?)";
         List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
@@ -48,12 +48,11 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
     }
 
     public List<VagaDto> listarVagas() throws SistemaRHDBException {
-        String sql = "select * from listar_vagas()";
+        String sql = "SELECT * FROM listar_vagas()";
         List<VagaDto> vagaDtos = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
-            //ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
 
             Date data;

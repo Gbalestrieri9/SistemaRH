@@ -6,7 +6,7 @@ import exception.SistemaRHDBException;
 
 public class CandidatoService {
 
-    ICandidatoDao candidatoDao;
+    private ICandidatoDao candidatoDao;
 
     public CandidatoService(){
         this.candidatoDao = new CandidatoDaoImpl();

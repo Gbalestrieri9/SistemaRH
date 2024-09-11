@@ -9,10 +9,9 @@ import java.util.Scanner;
 
 public class UsuarioController {
 
-    Scanner input = new Scanner(System.in);
-
-    UsuarioService usuarioService;
-    ClienteLogadoDto clienteLogado;
+    private Scanner input = new Scanner(System.in);
+    private UsuarioService usuarioService;
+    private ClienteLogadoDto clienteLogado;
 
     public UsuarioController() throws SQLException {
         this.usuarioService = new UsuarioService();
@@ -25,9 +24,7 @@ public class UsuarioController {
         String email = input.nextLine();
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_SENHA);
         String senha = input.nextLine();
-        System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_TIPO);
-        String tipo = input.nextLine().toUpperCase();
-        usuarioService.cadastrarUsuario(nome, email, senha, tipo);
+        usuarioService.cadastrarUsuario(nome, email, senha);
     }
 
     public int login() {
@@ -45,5 +42,10 @@ public class UsuarioController {
             System.out.println("Credenciais invalidas. Tente novamente.");
         }
         return idConta;
+    }
+
+    public String getTipoConta(int id) {
+
+        return usuarioService.getTipoConta(id);
     }
 }

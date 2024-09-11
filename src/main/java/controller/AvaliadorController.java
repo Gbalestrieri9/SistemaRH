@@ -14,9 +14,9 @@ import java.util.Scanner;
 
 public class AvaliadorController {
 
-    Scanner input = new Scanner(System.in);
+   private Scanner input = new Scanner(System.in);
 
-    AvaliadorService avaliadorService;
+   private AvaliadorService avaliadorService;
 
     public AvaliadorController() throws SQLException {
         this.avaliadorService = new AvaliadorService();

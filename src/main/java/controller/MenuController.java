@@ -1,16 +1,18 @@
 package controller;
 
-import dto.ClienteLogadoDto;
+
+import util.ConstantesUtil;
 
 import java.sql.SQLException;
 
 public class MenuController {
 
-    UsuarioController usuarioController;
-    CandidatoController candidatoController;
-    AvaliadorController avaliadorController;
+    private UsuarioController usuarioController;
+    private CandidatoController candidatoController;
+    private AvaliadorController avaliadorController;
 
     private int id;
+    private String tipo;
 
     public MenuController() throws SQLException {
         this.usuarioController = new UsuarioController();
@@ -25,15 +27,29 @@ public class MenuController {
                 break;
             case 2:
                 id = usuarioController.login();
+                tipo = usuarioController.getTipoConta(id);
                 break;
             case 3:
-                candidatoController.cadastrarHabilidade(id);
+                if ("candidato".equalsIgnoreCase(tipo)){
+                    candidatoController.cadastrarHabilidade(id);
+                }else {
+                    System.out.println(ConstantesUtil.MENSAGEM_TIPO_AVALIADOR_NAO_PERMITIDO);
+                }
+
                 break;
             case 4:
-                avaliadorController.retornaHabilidadesPorEmail(id);
+                if ("avaliador".equalsIgnoreCase(tipo)){
+                    avaliadorController.retornaHabilidadesPorEmail(id);
+                }else {
+                    System.out.println(ConstantesUtil.MENSAGEM_TIPO_CANDIDATO_NAO_PERMITIDO);
+                }
                 break;
             case 5:
-                avaliadorController.inserirCandidatoNaVaga(id);
+                if ("avaliador".equalsIgnoreCase(tipo)){
+                    avaliadorController.inserirCandidatoNaVaga(id);
+                }else {
+                    System.out.println(ConstantesUtil.MENSAGEM_TIPO_CANDIDATO_NAO_PERMITIDO);
+                }
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");

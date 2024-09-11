@@ -1,8 +1,6 @@
 package controller;
 
-import dto.ClienteLogadoDto;
 import service.CandidatoService;
-import service.UsuarioService;
 import util.ConstantesUtil;
 
 import java.sql.SQLException;
@@ -10,9 +8,9 @@ import java.util.Scanner;
 
 public class CandidatoController {
 
-    Scanner input = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
-    CandidatoService candidatoService;
+    private CandidatoService candidatoService;
 
     public CandidatoController() throws SQLException {
         this.candidatoService = new CandidatoService();
