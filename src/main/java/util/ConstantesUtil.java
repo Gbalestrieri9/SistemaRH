@@ -27,4 +27,5 @@ public class ConstantesUtil {
     public static final String MENSAGEM_ERRO_SENHA_INVALIDO = "senha invalida";
     public static final String MENSAGEM_SUCESSO_CADASTRO = "Cadastro realizado com sucesso";
     public static final String MENSAGEM_SUCESSO_CADASTRO_HABILIDADE = "Cadastro da habilidade com sucesso";
+    public static final String MENSAGEM_ERRO_DIGITACAO_CATEGORIA_HABILIDADE = "Nenhum habilidade encontrada. Digite apenas as categorias disponíveis\n";
 }
