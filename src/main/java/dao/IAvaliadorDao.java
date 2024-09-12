@@ -13,4 +13,5 @@ public interface IAvaliadorDao {
     public List<VagaDto> listarVagas() throws SistemaRHDBException;
 
     public void inserirCandidatoVaga(int id, String email,String vagaNumero) throws SistemaRHDBException;
+    public String criarAvaliador(String nome, String email, String senha) throws SistemaRHDBException;
 }

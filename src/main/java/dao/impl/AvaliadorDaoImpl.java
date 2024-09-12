@@ -89,4 +89,23 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
             throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_INSERIR_CANDIDATO_DB);
         }
     }
+
+    public String criarAvaliador(String nome, String email, String senha) throws SistemaRHDBException {
+        String sql = "CALL inserir_usuario(?, ?, ?)";
+
+        String mensagem = "";
+        try {
+            minhaConexao = conexaoUtil.conexao();
+            PreparedStatement ps = minhaConexao.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            ps.setString(2, email);
+            ps.setString(3, senha);
+            ps.execute();
+            conexaoUtil.fecharConexao(minhaConexao);
+        }catch (SQLException e){
+            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_USUARIO);
+        }
+        return mensagem;
+    }
 }

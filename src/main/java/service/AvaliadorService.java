@@ -45,4 +45,14 @@ public class AvaliadorService {
             return false;
         }
     }
+
+    public String cadastrarAvaliador(String nome, String email, String senha) {
+        String mensagem = "";
+        try {
+            AvaliadorDao.criarAvaliador(nome, email, senha);
+        } catch (SistemaRHDBException e){
+            System.out.println(e.getMessage());
+        }
+        return mensagem;
+    }
 }

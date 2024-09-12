@@ -4,6 +4,9 @@ import dto.CategoriaEHabilidadeDto;
 import dto.VagaDto;
 import service.AvaliadorService;
 import util.ConstantesUtil;
+import util.EmailValidadorUtil;
+import util.NomeValidadorUtil;
+import util.SenhaValidadorUtil;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -65,5 +68,34 @@ public class AvaliadorController {
         }else {
             System.out.println(ConstantesUtil.MENSAGEM_ERRO_INSERIR_CANDIDATO);
         }
+    }
+
+    public void cadastrarAvaliador(int id) {
+        String nome;
+        String email;
+        String senha;
+        while (true){
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_NOME);
+            nome = input.nextLine();
+            if (!NomeValidadorUtil.validateName(nome)) {
+                System.out.println(ConstantesUtil.MENSAGEM_ERRO_NOME_INVALIDO);
+                continue;
+            }
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL);
+            email = input.nextLine();
+            if (!EmailValidadorUtil.isValidEmail(email)) {
+                System.out.println(ConstantesUtil.MENSAGEM_ERRO_EMAIL_INVALIDO);
+                continue;
+            }
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_SENHA);
+            senha = input.nextLine();
+            if (!SenhaValidadorUtil.isValidPassword(senha)) {
+                System.out.println(ConstantesUtil.MENSAGEM_ERRO_SENHA_INVALIDO);
+                continue;
+            }
+            break;
+        }
+        avaliadorService.cadastrarAvaliador(nome, email, senha);
+        System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO);
     }
 }

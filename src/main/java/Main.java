@@ -22,14 +22,15 @@ public class Main {
                         + "3.Cadastrar habilidade\n"
                         + "4.Acessar habilidades do candidato\n"
                         + "5.Inserir candidato na vaga\n"
-                        + "6.Sair \n");
+                        + "6.Cadastrar novo Avaliador \n"
+                        + "7.Sair \n");
 
                 System.out.println(ConstantesUtil.MENSAGEM_DIGITAR_NUMERO_MENU);
                 acaoDigitada = input.nextInt();
                // input.nextLine();
                 System.out.println("\n");
 
-                if(acaoDigitada == 6) {
+                if(acaoDigitada == 7) {
                     menu.controle(acaoDigitada);
                     executando = false;
                     input.close();
