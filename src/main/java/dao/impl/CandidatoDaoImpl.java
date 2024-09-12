@@ -14,9 +14,10 @@ public class CandidatoDaoImpl implements ICandidatoDao {
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public void CadastrarHabilidade(int idUsuario,String categoria, String habilidade) throws SistemaRHDBException{
+    public String CadastrarHabilidade(int idUsuario,String categoria, String habilidade) throws SistemaRHDBException{
         String sql = "CALL inserir_habilidade(?, ?, ?)";
 
+        String mensagem = "";
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
@@ -30,5 +31,6 @@ public class CandidatoDaoImpl implements ICandidatoDao {
             System.out.println(e.getMessage());
             throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_HABILIDADE);
         }
+        return mensagem;
     }
 }

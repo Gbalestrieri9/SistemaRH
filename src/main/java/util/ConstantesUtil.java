@@ -22,4 +22,9 @@ public class ConstantesUtil {
     public static final String MENSAGEM_ERRO_INSERIR_CANDIDATO_DB = "Erro ao cadastrar o candidato na vaga";
     public static final String MENSAGEM_TIPO_AVALIADOR_NAO_PERMITIDO = "Acesso negado. Somente candidatos podem acessar esta opção";
     public static final String MENSAGEM_TIPO_CANDIDATO_NAO_PERMITIDO = "Acesso negado. Somente Avaliadores podem acessar esta opção";
+    public static final String MENSAGEM_ERRO_NOME_INVALIDO = "Nome invalido.";
+    public static final String MENSAGEM_ERRO_EMAIL_INVALIDO = "Email invalido";
+    public static final String MENSAGEM_ERRO_SENHA_INVALIDO = "senha invalida";
+    public static final String MENSAGEM_SUCESSO_CADASTRO = "Cadastro realizado com sucesso";
+    public static final String MENSAGEM_SUCESSO_CADASTRO_HABILIDADE = "Cadastro da habilidade com sucesso";
 }

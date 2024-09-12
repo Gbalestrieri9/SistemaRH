@@ -14,12 +14,14 @@ public class UsuarioService {
         this.usuarioDao = new UsuarioDaoImpl();
     }
 
-    public void cadastrarUsuario(String nome, String email, String senha) {
+    public String cadastrarUsuario(String nome, String email, String senha) {
+        String mensagem = "";
         try {
             usuarioDao.criarUsuario(nome, email, senha);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }
+        return mensagem;
     }
 
     public int loginUsuario(String email, String senha){

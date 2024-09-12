@@ -23,5 +23,6 @@ public class CandidatoController {
         String habilidade = input.nextLine();
 
         candidatoService.cadastrarHabilidade(id,categoria,habilidade);
+        System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO_HABILIDADE);
     }
 }

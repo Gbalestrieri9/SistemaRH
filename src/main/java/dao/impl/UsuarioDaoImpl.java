@@ -12,9 +12,10 @@ public class UsuarioDaoImpl implements IUsuarioDao {
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public void criarUsuario(String nome, String email, String senha) throws SistemaRHDBException {
+    public String criarUsuario(String nome, String email, String senha) throws SistemaRHDBException {
         String sql = "CALL inserir_usuario(?, ?, ?)";
 
+        String mensagem = "";
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
@@ -27,9 +28,8 @@ public class UsuarioDaoImpl implements IUsuarioDao {
         }catch (SQLException e){
             throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_USUARIO);
         }
-
+        return mensagem;
     }
-
 
     public int loginUsuario(String email,String senha) throws SistemaRHDBException{
         String sql = "SELECT * FROM login_usuario(?,?)";

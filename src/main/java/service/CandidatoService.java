@@ -11,12 +11,13 @@ public class CandidatoService {
     public CandidatoService(){
         this.candidatoDao = new CandidatoDaoImpl();
     }
-
-    public void cadastrarHabilidade(int idUsuario,String categoria, String habilidade) {
+    String mensagem = "";
+    public String cadastrarHabilidade(int idUsuario,String categoria, String habilidade) {
         try {
             candidatoDao.CadastrarHabilidade(idUsuario,categoria, habilidade);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }
+        return mensagem;
     }
 }

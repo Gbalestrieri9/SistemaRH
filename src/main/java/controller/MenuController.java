@@ -35,7 +35,6 @@ public class MenuController {
                 }else {
                     System.out.println(ConstantesUtil.MENSAGEM_TIPO_AVALIADOR_NAO_PERMITIDO);
                 }
-
                 break;
             case 4:
                 if ("avaliador".equalsIgnoreCase(tipo)){
@@ -50,6 +49,8 @@ public class MenuController {
                 }else {
                     System.out.println(ConstantesUtil.MENSAGEM_TIPO_CANDIDATO_NAO_PERMITIDO);
                 }
+                break;
+            case 6:
                 break;
             default:
                 System.out.println("Opção inválida. Tente novamente.");
