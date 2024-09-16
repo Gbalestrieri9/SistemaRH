@@ -43,8 +43,6 @@ public class AvaliadorController {
     public void listarVagas(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-
-
         List<VagaDto> vagas = avaliadorService.listarVagas();
         System.out.println("\nLista de Vagas:");
         for (VagaDto vagaDto : vagas){
@@ -75,19 +73,19 @@ public class AvaliadorController {
         String email;
         String senha;
         while (true){
-            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_NOME);
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_NOME_AVALIADOR);
             nome = input.nextLine();
             if (!NomeValidadorUtil.validateName(nome)) {
                 System.out.println(ConstantesUtil.MENSAGEM_ERRO_NOME_INVALIDO);
                 continue;
             }
-            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL);
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL_AVALIADOR);
             email = input.nextLine();
             if (!EmailValidadorUtil.isValidEmail(email)) {
                 System.out.println(ConstantesUtil.MENSAGEM_ERRO_EMAIL_INVALIDO);
                 continue;
             }
-            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_SENHA);
+            System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_SENHA_AVALIADOR);
             senha = input.nextLine();
             if (!SenhaValidadorUtil.isValidPassword(senha)) {
                 System.out.println(ConstantesUtil.MENSAGEM_ERRO_SENHA_INVALIDO);
@@ -96,6 +94,5 @@ public class AvaliadorController {
             break;
         }
         avaliadorService.cadastrarAvaliador(nome, email, senha);
-        System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO);
     }
 }

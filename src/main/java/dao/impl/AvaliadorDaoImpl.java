@@ -3,7 +3,10 @@ package dao.impl;
 import dao.IAvaliadorDao;
 import dto.CategoriaEHabilidadeDto;
 import dto.VagaDto;
+import enums.ErrorCode;
+import exception.NestedRuntimeException;
 import exception.SistemaRHDBException;
+import org.springframework.dao.DataAccessException;
 import util.ConexaoUtil;
 import util.ConstantesUtil;
 
@@ -74,7 +77,7 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
         return vagaDtos;
     }
 
-    public void inserirCandidatoVaga(int id, String email,String vagaNumero) throws SistemaRHDBException{
+    public boolean inserirCandidatoVaga(int id, String email,String vagaNumero) throws DataAccessException, SistemaRHDBException {
         String sql = "CALL inserir_candidato_vaga(?,?)";
 
         try {
@@ -84,14 +87,15 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
             ps.setString(2,vagaNumero);
             ps.execute();
             conexaoUtil.fecharConexao(minhaConexao);
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_INSERIR_CANDIDATO_DB);
+            return true;
+        }catch (NestedRuntimeException | SQLException e){
+            NestedRuntimeException.ErroSql(e);
+            return false;
         }
     }
 
     public String criarAvaliador(String nome, String email, String senha) throws SistemaRHDBException {
-        String sql = "CALL inserir_usuario(?, ?, ?)";
+        String sql = "CALL inserir_avaliador(?, ?, ?)";
 
         String mensagem = "";
         try {
@@ -104,7 +108,7 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
             ps.execute();
             conexaoUtil.fecharConexao(minhaConexao);
         }catch (SQLException e){
-            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_USUARIO);
+            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_AVALIADOR);
         }
         return mensagem;
     }

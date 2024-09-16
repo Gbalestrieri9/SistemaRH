@@ -5,6 +5,7 @@ import dao.impl.AvaliadorDaoImpl;
 import dto.CategoriaEHabilidadeDto;
 import dto.VagaDto;
 import exception.SistemaRHDBException;
+import util.ConstantesUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,8 +39,11 @@ public class AvaliadorService {
 
     public boolean inserirCandidatoNaVaga(int id, String email, String vagaNumero){
         try {
-            AvaliadorDao.inserirCandidatoVaga(id,email,vagaNumero);
-            return true;
+            if (AvaliadorDao.inserirCandidatoVaga(id,email,vagaNumero)){
+                return true;
+            }else {
+                return false;
+            }
         }catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
             return false;
@@ -50,6 +54,7 @@ public class AvaliadorService {
         String mensagem = "";
         try {
             AvaliadorDao.criarAvaliador(nome, email, senha);
+            System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }

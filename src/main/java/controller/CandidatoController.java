@@ -56,6 +56,5 @@ public class CandidatoController {
         }
 
         candidatoService.cadastrarHabilidade(id, categoriaEscolhida, habilidade);
-        System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO_HABILIDADE);
     }
 }

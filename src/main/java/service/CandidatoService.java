@@ -3,6 +3,7 @@ package service;
 import dao.ICandidatoDao;
 import dao.impl.CandidatoDaoImpl;
 import exception.SistemaRHDBException;
+import util.ConstantesUtil;
 
 public class CandidatoService {
 
@@ -15,6 +16,7 @@ public class CandidatoService {
     public String cadastrarHabilidade(int idUsuario,String categoria, String habilidade) {
         try {
             candidatoDao.CadastrarHabilidade(idUsuario,categoria, habilidade);
+            System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO_HABILIDADE);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }

@@ -5,7 +5,6 @@ public class ConstantesUtil {
     public static final String MENSAGEM_ESCREVER_NOME = "Escreva o seu nome:";
     public static final String MENSAGEM_ESCREVER_EMAIL = "Escreva o seu email:";
     public static final String MENSAGEM_ESCREVER_SENHA = "Escreva a sua senha:";
-    public static final String MENSAGEM_ESCREVER_TIPO = "Escreva o seu tipo:";
     public static final String MENSAGEM_ERRO_CADASTRAR_USUARIO = "Erro ao cadastrar o usuario";
     public static final String MENSAGEM_ERRO_LOGIN_USUARIO = "Erro ao realizar o login";
     public static final String MENSAGEM_ERRO_CADASTRAR_HABILIDADE = "Erro ao cadastrar habilidade";
@@ -28,4 +27,8 @@ public class ConstantesUtil {
     public static final String MENSAGEM_SUCESSO_CADASTRO = "Cadastro realizado com sucesso";
     public static final String MENSAGEM_SUCESSO_CADASTRO_HABILIDADE = "Cadastro da habilidade com sucesso";
     public static final String MENSAGEM_ERRO_DIGITACAO_CATEGORIA_HABILIDADE = "Nenhum habilidade encontrada. Digite apenas as categorias disponíveis\n";
+    public static final String MENSAGEM_ESCREVER_NOME_AVALIADOR = "Escreva o nome do avaliador";
+    public static final String MENSAGEM_ESCREVER_EMAIL_AVALIADOR = "Escreva o email do avaliador";
+    public static final String MENSAGEM_ESCREVER_SENHA_AVALIADOR = "Escreva a senha do avaliador";
+    public static final String MENSAGEM_ERRO_CADASTRAR_AVALIADOR = "Erro ao cadastrar o avaliador";
 }
