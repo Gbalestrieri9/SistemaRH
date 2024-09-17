@@ -41,8 +41,10 @@ public class CandidatoController {
             categoriaEscolhida = input.nextLine();
             for (CategoriaHabilidade cat : categoria) {
                 if (categoriaEscolhida.equalsIgnoreCase(cat.toString())) {
-                    System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_HABILIDADE);
-                    habilidade = input.nextLine();
+                    while (habilidade.isEmpty()){
+                        System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_HABILIDADE);
+                        habilidade = input.nextLine();
+                    }
                     habilidadeCheck = true;
                     break;
                 }
