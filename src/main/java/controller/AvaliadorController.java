@@ -29,14 +29,16 @@ public class AvaliadorController {
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL_CANDIDATO);
         String email = input.nextLine();
 
-        List<CategoriaEHabilidadeDto> habilidadeDtoList = new ArrayList<>();
+        List<CategoriaEHabilidadeDto> habilidadeDtoList;
         habilidadeDtoList= avaliadorService.retornaHabilidadesPorEmail(email);
 
-        System.out.println("\nHabilidades do candidato: ");
-        for (CategoriaEHabilidadeDto habilidadeDto : habilidadeDtoList )
-        {
-            System.out.println(habilidadeDto.toString());
+        if(habilidadeDtoList != null && !habilidadeDtoList.isEmpty()){
+            System.out.println("\nHabilidades do candidato: ");
 
+            for (CategoriaEHabilidadeDto habilidadeDto : habilidadeDtoList )
+            {
+                System.out.println(habilidadeDto.toString());
+            }
         }
     }
 

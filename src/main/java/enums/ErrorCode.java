@@ -7,6 +7,8 @@ public enum ErrorCode {
 
     VAGA_OCUPADA("A vaga % já está ocupada e não pode ser preenchida por outro candidato.", "A vaga já está ocupada e não pode ser preenchida por outro candidato."),
     VAGA_AVALIADOR("Não é permitido atribuir uma vaga para um usuário do tipo AVALIADOR.", "Não é permitido atribuir uma vaga para um usuário do tipo AVALIADOR."),
+    VAGA_NUMERO("A vaga não existe.", "A vaga não existe."),
+    LISTAR_HABILIDADES("O usuario não existe.", "O usuario não existe."),
     OUTRO_ERRO("Outro erro", "Erro desconhecido");
 
     private final String message;

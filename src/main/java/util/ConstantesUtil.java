@@ -31,4 +31,5 @@ public class ConstantesUtil {
     public static final String MENSAGEM_ESCREVER_EMAIL_AVALIADOR = "Escreva o email do avaliador";
     public static final String MENSAGEM_ESCREVER_SENHA_AVALIADOR = "Escreva a senha do avaliador";
     public static final String MENSAGEM_ERRO_CADASTRAR_AVALIADOR = "Erro ao cadastrar o avaliador";
+    public static final String MENSAGEM_ERRO_BUSCAR_HABILIDADES = "Erro ao buscar as habilidades.";
 }

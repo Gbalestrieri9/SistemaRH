@@ -3,8 +3,7 @@ package dao.impl;
 import dao.IAvaliadorDao;
 import dto.CategoriaEHabilidadeDto;
 import dto.VagaDto;
-import enums.ErrorCode;
-import exception.NestedRuntimeException;
+import exception.DbException;
 import exception.SistemaRHDBException;
 import org.springframework.dao.DataAccessException;
 import util.ConexaoUtil;
@@ -24,7 +23,7 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws SistemaRHDBException {
+    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws DataAccessException,SistemaRHDBException {
         String sql = "SELECT * FROM busca_habilidades_por_email(?)";
         List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
         try {
@@ -43,9 +42,9 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
                 habilidades.add(categoriaEHabilidadeDto);
             }
             conexaoUtil.fecharConexao(minhaConexao);
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_HABILIDADE);
+        }catch (DbException | SQLException e){
+            DbException.ErroSql(e);
+            throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_BUSCAR_HABILIDADES);
         }
         return habilidades;
     }
@@ -77,7 +76,7 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
         return vagaDtos;
     }
 
-    public boolean inserirCandidatoVaga(int id, String email,String vagaNumero) throws DataAccessException, SistemaRHDBException {
+    public boolean inserirCandidatoVaga(int id, String email,String vagaNumero) throws DataAccessException {
         String sql = "CALL inserir_candidato_vaga(?,?)";
 
         try {
@@ -88,8 +87,8 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
             ps.execute();
             conexaoUtil.fecharConexao(minhaConexao);
             return true;
-        }catch (NestedRuntimeException | SQLException e){
-            NestedRuntimeException.ErroSql(e);
+        }catch (DbException | SQLException e){
+            DbException.ErroSql(e);
             return false;
         }
     }

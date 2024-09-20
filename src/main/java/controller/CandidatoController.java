@@ -1,6 +1,6 @@
 package controller;
 
-import model.CategoriaHabilidade;
+import enums.CategoriaHabilidade;
 import service.CandidatoService;
 import util.ConstantesUtil;
 

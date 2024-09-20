@@ -27,7 +27,6 @@ public class Main {
 
                 System.out.println(ConstantesUtil.MENSAGEM_DIGITAR_NUMERO_MENU);
                 acaoDigitada = input.nextInt();
-               // input.nextLine();
                 System.out.println("\n");
 
                 if(acaoDigitada == 7) {
