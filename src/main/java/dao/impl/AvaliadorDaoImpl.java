@@ -1,8 +1,9 @@
 package dao.impl;
 
 import dao.IAvaliadorDao;
-import dto.CategoriaEHabilidadeDto;
-import dto.VagaDto;
+import model.CategoriaEHabilidade;
+import model.Usuario;
+import model.Vaga;
 import exception.DbException;
 import exception.SistemaRHDBException;
 import org.springframework.dao.DataAccessException;
@@ -19,13 +20,13 @@ import java.util.List;
 
 public class AvaliadorDaoImpl implements IAvaliadorDao {
 
-    private CategoriaEHabilidadeDto categoriaEHabilidadeDto;
+    private CategoriaEHabilidade categoriaEHabilidade;
     private ConexaoUtil conexaoUtil = new ConexaoUtil();
     private Connection minhaConexao;
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) throws DataAccessException,SistemaRHDBException {
+    public List<CategoriaEHabilidade> retornaHabilidadesPorEmail(String email) throws DataAccessException,SistemaRHDBException {
         String sql = "SELECT * FROM busca_habilidades_por_email(?)";
-        List<CategoriaEHabilidadeDto> habilidades = new ArrayList<>();
+        List<CategoriaEHabilidade> habilidades = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
@@ -38,8 +39,8 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
             while(rs.next()){
                 categoria = rs.getString("habilidade_categoria");
                 habilidade = rs.getString("habilidade_habilidade");
-                categoriaEHabilidadeDto = new CategoriaEHabilidadeDto(categoria, habilidade);
-                habilidades.add(categoriaEHabilidadeDto);
+                categoriaEHabilidade = new CategoriaEHabilidade(categoria, habilidade);
+                habilidades.add(categoriaEHabilidade);
             }
             conexaoUtil.fecharConexao(minhaConexao);
         }catch (DbException | SQLException e){
@@ -49,9 +50,9 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
         return habilidades;
     }
 
-    public List<VagaDto> listarVagas() throws SistemaRHDBException {
+    public List<Vaga> listarVagas() throws SistemaRHDBException {
         String sql = "SELECT * FROM listar_vagas()";
-        List<VagaDto> vagaDtos = new ArrayList<>();
+        List<Vaga> vagas = new ArrayList<>();
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
@@ -65,15 +66,15 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
                 data = rs.getDate("vaga_data");
                 descricao = rs.getString("vaga_descricao");
                 numero = rs.getString("vaga_numero");
-                VagaDto vaga = new VagaDto(data, descricao,numero);
-                vagaDtos.add(vaga);
+                Vaga vaga = new Vaga(data, descricao,numero);
+                vagas.add(vaga);
             }
             conexaoUtil.fecharConexao(minhaConexao);
         }catch (SQLException e){
             System.out.println(e.getMessage());
             throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_LISTAR_VAGAS);
         }
-        return vagaDtos;
+        return vagas;
     }
 
     public boolean inserirCandidatoVaga(int id, String email,String vagaNumero) throws DataAccessException {
@@ -93,22 +94,19 @@ public class AvaliadorDaoImpl implements IAvaliadorDao {
         }
     }
 
-    public String criarAvaliador(String nome, String email, String senha) throws SistemaRHDBException {
+    public void criarAvaliador(Usuario usuario) throws SistemaRHDBException {
         String sql = "CALL inserir_avaliador(?, ?, ?)";
-
-        String mensagem = "";
         try {
             minhaConexao = conexaoUtil.conexao();
             PreparedStatement ps = minhaConexao.prepareStatement(sql);
 
-            ps.setString(1, nome);
-            ps.setString(2, email);
-            ps.setString(3, senha);
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getEmail());
+            ps.setString(3, usuario.getSenha());
             ps.execute();
             conexaoUtil.fecharConexao(minhaConexao);
         }catch (SQLException e){
             throw new SistemaRHDBException(ConstantesUtil.MENSAGEM_ERRO_CADASTRAR_AVALIADOR);
         }
-        return mensagem;
     }
 }

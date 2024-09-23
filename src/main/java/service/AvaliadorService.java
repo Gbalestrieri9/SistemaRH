@@ -2,8 +2,9 @@ package service;
 
 import dao.IAvaliadorDao;
 import dao.impl.AvaliadorDaoImpl;
-import dto.CategoriaEHabilidadeDto;
-import dto.VagaDto;
+import model.CategoriaEHabilidade;
+import model.Usuario;
+import model.Vaga;
 import exception.SistemaRHDBException;
 import util.ConstantesUtil;
 
@@ -19,7 +20,7 @@ public class AvaliadorService {
         this.AvaliadorDao = new AvaliadorDaoImpl();
     }
 
-    public List<CategoriaEHabilidadeDto> retornaHabilidadesPorEmail(String email) {
+    public List<CategoriaEHabilidade> retornaHabilidadesPorEmail(String email) {
         try {
             return AvaliadorDao.retornaHabilidadesPorEmail(email);
         } catch (SistemaRHDBException e) {
@@ -28,7 +29,7 @@ public class AvaliadorService {
         }
     }
 
-    public List<VagaDto> listarVagas(){
+    public List<Vaga> listarVagas(){
         try {
             return AvaliadorDao.listarVagas();
         }catch (SistemaRHDBException e){
@@ -50,14 +51,12 @@ public class AvaliadorService {
         }
     }
 
-    public String cadastrarAvaliador(String nome, String email, String senha) {
-        String mensagem = "";
+    public void cadastrarAvaliador(Usuario usuario) {
         try {
-            AvaliadorDao.criarAvaliador(nome, email, senha);
+            AvaliadorDao.criarAvaliador(usuario);
             System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }
-        return mensagem;
     }
 }

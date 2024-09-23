@@ -4,6 +4,7 @@ import dto.ClienteLogadoDto;
 import exception.EmailException;
 import exception.NomeException;
 import exception.SenhaException;
+import model.Usuario;
 import service.UsuarioService;
 import util.ConstantesUtil;
 import util.EmailValidadorUtil;
@@ -24,6 +25,7 @@ public class UsuarioController {
     }
 
     public void cadastrar() {
+        Usuario usuario = new Usuario();
         String nome;
         String email;
         String senha;
@@ -48,8 +50,10 @@ public class UsuarioController {
             }
             break;
         }
-        usuarioService.cadastrarUsuario(nome, email, senha);
-
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        usuarioService.cadastrarUsuario(usuario);
     }
 
     public int login() {

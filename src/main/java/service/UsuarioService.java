@@ -3,6 +3,7 @@ package service;
 import dao.IUsuarioDao;
 import dao.impl.UsuarioDaoImpl;
 import exception.SistemaRHDBException;
+import model.Usuario;
 import util.ConstantesUtil;
 
 import java.sql.SQLException;
@@ -15,15 +16,13 @@ public class UsuarioService {
         this.usuarioDao = new UsuarioDaoImpl();
     }
 
-    public String cadastrarUsuario(String nome, String email, String senha) {
-        String mensagem = "";
+    public void cadastrarUsuario(Usuario usuario) {
         try {
-            mensagem= usuarioDao.criarUsuario(nome, email, senha);
+            usuarioDao.criarUsuario(usuario);
             System.out.println(ConstantesUtil.MENSAGEM_SUCESSO_CADASTRO);
         } catch (SistemaRHDBException e){
             System.out.println(e.getMessage());
         }
-        return mensagem;
     }
 
     public int loginUsuario(String email, String senha){

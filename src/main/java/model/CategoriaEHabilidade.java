@@ -1,11 +1,11 @@
-package dto;
+package model;
 
-public class CategoriaEHabilidadeDto {
+public class CategoriaEHabilidade {
 
     private String categoria;
     private String habilidades;
 
-    public CategoriaEHabilidadeDto(String categoria, String habilidades) {
+    public CategoriaEHabilidade(String categoria, String habilidades) {
         this.categoria = categoria;
         this.habilidades = habilidades;
     }

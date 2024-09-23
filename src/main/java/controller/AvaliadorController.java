@@ -1,7 +1,8 @@
 package controller;
 
-import dto.CategoriaEHabilidadeDto;
-import dto.VagaDto;
+import model.CategoriaEHabilidade;
+import model.Usuario;
+import model.Vaga;
 import service.AvaliadorService;
 import util.ConstantesUtil;
 import util.EmailValidadorUtil;
@@ -10,8 +11,6 @@ import util.SenhaValidadorUtil;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,13 +28,13 @@ public class AvaliadorController {
         System.out.println(ConstantesUtil.MENSAGEM_ESCREVER_EMAIL_CANDIDATO);
         String email = input.nextLine();
 
-        List<CategoriaEHabilidadeDto> habilidadeDtoList;
+        List<CategoriaEHabilidade> habilidadeDtoList;
         habilidadeDtoList= avaliadorService.retornaHabilidadesPorEmail(email);
 
         if(habilidadeDtoList != null && !habilidadeDtoList.isEmpty()){
             System.out.println("\nHabilidades do candidato: ");
 
-            for (CategoriaEHabilidadeDto habilidadeDto : habilidadeDtoList )
+            for (CategoriaEHabilidade habilidadeDto : habilidadeDtoList )
             {
                 System.out.println(habilidadeDto.toString());
             }
@@ -45,11 +44,11 @@ public class AvaliadorController {
     public void listarVagas(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        List<VagaDto> vagas = avaliadorService.listarVagas();
+        List<Vaga> vagas = avaliadorService.listarVagas();
         System.out.println("\nLista de Vagas:");
-        for (VagaDto vagaDto : vagas){
-            vagaDto.setDataStr(sdf.format(vagaDto.getData()));
-            System.out.println(vagaDto.toString());
+        for (Vaga vaga : vagas){
+            vaga.setDataStr(sdf.format(vaga.getData()));
+            System.out.println(vaga.toString());
         }
     }
 
@@ -71,6 +70,7 @@ public class AvaliadorController {
     }
 
     public void cadastrarAvaliador(int id) {
+        Usuario usuario = new Usuario();
         String nome;
         String email;
         String senha;
@@ -95,6 +95,9 @@ public class AvaliadorController {
             }
             break;
         }
-        avaliadorService.cadastrarAvaliador(nome, email, senha);
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        avaliadorService.cadastrarAvaliador(usuario);
     }
 }
